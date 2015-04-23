@@ -1,0 +1,99 @@
+﻿@*@model IEnumerable<VolunteerWebApp.Models.Volunteer>*@
+@model VolunteerWebApp.Models.HomeVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Volunteers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(model => model.Volunteer.FirstName)
+    @Html.EditorFor(model => model.Volunteer.FirstName)
+
+    @Html.DisplayNameFor(model => model.Volunteer.LastName)
+    @Html.EditorFor(model => model.Volunteer.LastName)
+
+    @Html.DisplayNameFor(model => model.Volunteer.StartDate)
+    @Html.EditorFor(model => model.Volunteer.StartDate)
+
+    @Html.DisplayNameFor(model => model.Volunteer.EndDate)
+    @Html.EditorFor(model => model.Volunteer.EndDate)
+    <p>
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<hr />
+
+<table>
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.HomePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.CellPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.HomeAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.WorkAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.EndDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Volunteers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.VolunteerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerId })
+            </td>
+        </tr>
+    }
+
+</table>
